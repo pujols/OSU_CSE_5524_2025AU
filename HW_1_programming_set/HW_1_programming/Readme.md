@@ -129,7 +129,7 @@ This command will run your code. You will see the resulting `Map_horizontal_edge
 
 
 
-# Question 4: (50 pts)
+# Question 4: (40 pts)
 
 * Given the input image `I`, the background map `Map_background`, surface map `Map_surface`, edge maps for different types `Map_horizontal_edge`, `Map_vertical_edge`, `Map_contact_edge`, and the camera angle `theta`, you are asked to complete the function `def Y_3D(I, Map_background, Map_horizontal_edge, Map_vertical_edge, Map_contact_edge, Map_surface, theta)`, which generates the Y (height) map in 3D.
 
