@@ -2,7 +2,7 @@
 
 ## Submission instructions
 
-* Due date and time: February 18th (Monday) 2025, 23:59 ET
+* Due date and time: September 18th (Thursday) 2025, 23:59 ET
 
 * Carmen submission: 
 Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the following files
@@ -28,7 +28,7 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 * We note that the provided commands are designed to work with Mac/Linux with Python version 3. If you use Windows (like me!), we recommend that you run the code in the Windows command line (CMD). You may use `py -3` instead of `python3` to run the code. You may use editors like PyCharm to write your code.
 
-* Caution! Please do not import packages (like scikit learn) that are not listed in the provided code. Follow the instructions in each question strictly to code up your solutions. Do not change the output format. Do not modify the code unless we instruct you to do so. (You are free to play with the code but your submitted code should not contain those changes that we do not ask you to do.) A homework solution that does not match the provided setup, such as format, name, initializations, etc., will not be graded. It is your responsibility to make sure that your code runs with the provided commands and scripts.
+* Caution! Please do not import packages (like scikit learn) that are not listed in the provided code. Follow the instructions in each question strictly to code up your solutions. Do not change the output format. Do not modify the code unless we instruct you to do so. (You are free to play with the code, but your submitted code should not contain those changes that we do not ask you to do.) A homework solution that does not match the provided setup, such as format, name, initializations, etc., will not be graded. It is your responsibility to make sure that your code runs with the provided commands and scripts.
 
 ## Installation instructions
 
@@ -47,13 +47,13 @@ In this homework, you will implement a simplified version of the simple version 
 
 * Specifically, you are given the following gray-scale image I (a 2D matrix) captured by parallel projection with a viewing angle of theta = 45 degrees. White color means a pixel value of 1; Gray color means a pixel value of 0.5; black color means a pixel value of 0.0.
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/I.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/I.png)
 
 * Your goal is to derive the 3D locations of each pixel. Specifically, you are tasked to derive the 3D Y (height) map and 3D Z (depth) map for each pixel.
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/3D_Y.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/3D_Y.png)
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/3D_Z.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/3D_Z.png)
 
 As you can see, the Y and Z maps have the same size as the input image I. For each pixel location, the input image I records its color or light intensity, while the Y and Z maps record their height and depth in 3D.
 
@@ -97,7 +97,7 @@ This command will run your code. You will see the resulting `Map_background` dis
 
 * Your result should look like:
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_background.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_background.png)
 
 
 
@@ -121,11 +121,11 @@ This command will run your code. You will see the resulting `Map_horizontal_edge
 
 * Your result should look like:
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_horizontal_edge.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_horizontal_edge.png)
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_vertical_edge.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_vertical_edge.png)
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_contact_edge.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_1_programming_set/HW_1_programming/for_display/Map_contact_edge.png)
 
 
 
