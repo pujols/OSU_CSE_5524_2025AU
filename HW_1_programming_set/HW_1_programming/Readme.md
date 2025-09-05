@@ -57,6 +57,15 @@ In this homework, you will implement a simplified version of the simple version 
 
 As you can see, the Y and Z maps have the same size as the input image I. For each pixel location, the input image I records its color or light intensity, while the Y and Z maps record their height and depth in 3D.
 
+# Notes before you start or while you are implementing
+
+1. In your implementation, you should not hardcode the edge locations by reading how we generate the image I in the data_loader function. Instead, you should write an algorithm that relies on 1) each edge pixel's 2D angle to determine whether it is a vertical edge or a horizontal edge; and 2) each pixel's vertically adjacent pixels to determine whether it is a contact edge or not. The definitions of these edge categories can be found in the lecture slides or the textbook.
+
+If you simply hardcode the locations, you will earn 0 points for the corresponding question. ===> The TA and I will generate a different image I to run your code. 
+
+2. It is OK that you assume the background color, surface color, and edge colors are fixed. That is, you can set a pixel value threshold to determine which pixels belong to the background.
+
+3. It is fine if your resulting maps look a bit different from what we provided (like a few pixel differences). When we grade your homework, we will set a tolerance in comparing your results to ours.
 
 
 # Question -1: NumPy Exercise
