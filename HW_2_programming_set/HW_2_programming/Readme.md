@@ -73,7 +73,7 @@ Rectangle:
 
 
 
-# Question 1:  (10 pts)
+# Question 1: Convolution and binomial filter (10 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 1:`
 
