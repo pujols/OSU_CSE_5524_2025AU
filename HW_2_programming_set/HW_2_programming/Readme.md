@@ -1,8 +1,8 @@
-# Homework 4
+# Homework 2
 
 ## Submission instructions
 
-* Due date and time: April 21st (Monday) 2025, 23:59 ET
+* Due date and time: October 14th (Monday) 2025, 23:59 ET
 
 * Carmen submission: 
 Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the following files
@@ -16,7 +16,7 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 * Download or clone this repository.
 
-*  You will see a PPT and PDF named `HW4`, which provides useful information for the homework assignment.
+*  You will see a PPT and PDF named `HW2`, which provides useful information for the homework assignment.
 
 * You will see one Python script: `main.py`.
 
@@ -34,7 +34,7 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 * **Caution! Please do not import packages (like scikit learn) that are not listed in the provided code. In this homework, you are not allowed to use numPy's or other Python libraries' built-in convolution, filter functions, down-sampling, up-sampling, Gaussian pyramid, and Laplacian pyramid functions. If you use them, you will get 0 points for the entire homework.** 
 
-* Caution! Follow the instructions in each question strictly to code up your solutions. **Do not change the output format. Do not modify the code unless we instruct you to do so.** (You are free to play with the code but your submitted code should not contain those changes that we do not ask you to do.) A homework solution that does not match the provided setup, such as format, name, initializations, etc., will not be graded. It is your responsibility to make sure that your code runs with the provided commands and scripts.
+* Caution! Follow the instructions in each question strictly to code up your solutions. **Do not change the output format. Do not modify the code unless we instruct you to do so.** (You are free to play with the code, but your submitted code should not contain those changes that we do not ask you to do.) A homework solution that does not match the provided setup, such as format, name, initializations, etc., will not be graded. It is your responsibility to make sure that your code runs with the provided commands and scripts.
 
 ## Installation instructions
 
@@ -49,9 +49,17 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 # Introduction
 
-In this homework, you will implement down-sampling, up-sampling, the Gaussian pyramid, and the Laplacian pyramid introduced in textbook chapter 23. 
+* In this homework, you will implement convolution and one filter (a convolutional kernel) in Lectures 6 & 7 & 9 (textbook, chapters 15 & 17). 
 
-* You are given several images in the `data` folder. All of them have three color channels (red, green, and blue). The pixel values are between 0.0 to 1.0.
+* In this homework, you will implement down-sampling, up-sampling, the Gaussian pyramid, and the Laplacian pyramid introduced in the textbook chapter 23. 
+
+* You are given several images in the `data` folder, as well as the following toy image. All of them have three color channels (red, green, and blue). The pixel values are between 0.0 to 1.0.
+
+Recntangle: ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/rectangle.png)
+
+* The convoluted rectangle with an average (box) filter is as below:
+
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/Convolution_output_rectangle_average.png)
 
 
 
@@ -63,101 +71,128 @@ In this homework, you will implement down-sampling, up-sampling, the Gaussian py
 
 
 
-# Question 1: Downsampling (20 pts)
+# Question 1:  (20 pts)
 
-* Go to the `main` function and find `if int(args.current_step) >= 1:` and read the corresponding code.
+* Go to the `main` function and find `if int(args.current_step) == 1:`
 
-* We have implemented the 2D binomial kernel in the `load_kernel(args)` function.
+* Given the input image `I`, you need to perform convolution of it using `kernel`. 
 
-* Your job is to complete the implementation of the `Downsampling(args, I, kernel)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `I_out`. Please make sure that your results follow the required numpy array shapes. 
+* We have implemented one kernel in the `load_kernel(args)` function.
 
-* You may search **`#### Your job 1 starts here: downsampling ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+* Your job is to complete the implementation of the `Convolution(args, I, kernel)` function and a 2D binomial kernel in the `load_kernel(args)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `I_out`. Please make sure that your results follow the required numpy array shapes.
 
-* Caution! For this question, please follow the formula in `HW4.ppt` or `HW4.pdf`.
+* You may search **`#### Your job 1.0`**, **`#### Your job 1.1`**, **`#### Your job 1.2`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
 
-
-
-# Question 2: Gaussian pyramid (20 pts)
-
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_4_programming_set/HW_4_programming/for_display/Down_sampled.png)
-
-* Go to the `main` function and find `if int(args.current_step) >= 1:` and read the corresponding code.
-
-* Your job is to complete the implementation of the `Gaussian_pyramid(args, I, kernel, scale)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy dictionary `Output`, corresponding to the downsampled images. Please make sure that your results follow the required numpy array shapes. 
-
-* You may search **`#### Your job 2 starts here: create the n-th downsampled image ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
-
-* Caution! For this question, please follow the formula in `HW4.ppt` or `HW4.pdf`.
+* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
 
 ## Running and saving
 
-* Once completed, please run the following command<br/>
-`python3 main.py --current_step 1 --data lighthouse --display --save`<br/>
+* Once completed, please run the following commands<br/>
+`python3 main.py --current_step 1 --data rectangle --kernel average --display --save`<br/>
+`python3 main.py --current_step 1 --data dreese --kernel binomial --display --save`<br/>
 These commands will run your code. You will see several generated images, and several texts displayed in command lines. 
 
-* The code will generate `Downsampled_lighthouse_scale_0.npz`, `Downsampled_lighthouse_scale_1.npz`, `Downsampled_lighthouse_scale_2.npz`, `Downsampled_lighthouse_scale_3.npz`, and `Downsampled_lighthouse.png`, which you will include in your submission.
-
-* **Running the code should only take several seconds. If it runs more than 20 seconds, you will get a 30% reduction for Questions 1 and 2.** 
-
-
-
-# Question 3: Upsampling (20 pts)
-
-* Go to the `main` function and find `if int(args.current_step) >= 2:` and read the corresponding code.
-
-* Your job is to complete the implementation of the `Upsampling(args, I, kernel)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `I_out`. Please make sure that your results follow the required numpy array shapes. 
-
-* You may search **`#### Your job 3 starts here: upsampling ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
-
-* Caution! For this question, please follow the formula in `HW4.ppt` or `HW4.pdf`.
+* The code will generate `1_Convolution_output_rectangle_average.png`, `1_Convolution_output_dreese_binomial.png`, `1_Results_Convolution_output_dreese_binomial.npz`, and `1_Results_Convolution_output_rectangle_average.npz`, which you will include in your submission.
+ 
+* **Running the code should only take several seconds. If it runs more than 20 seconds, you will get a 30% reduction for Questions 1.** 
+ 
 
 
-
-# Question 4: Laplacian pyramid (20 pts)
-
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_4_programming_set/HW_4_programming/for_display/Up_sampled.png)
+# Question 2: Downsampling (20 pts)
 
 * Go to the `main` function and find `if int(args.current_step) >= 2:` and read the corresponding code.
 
-* Your job is to complete the implementation of the `Laplacian_pyramid(args, G_pyramid, kernel, scale)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy dictionary `Output`, corresponding to the residual images. Please make sure that your results follow the required numpy array shapes. 
+* We will use your implemented 2D binomial kernel in the `load_kernel(args)` function.
 
-* You may search **`#### Your job 4 starts here: create the n-th residual image ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+* Your job is to complete the implementation of the `Downsampling(args, I, kernel)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `I_out`. Please make sure that your results follow the required numpy array shapes. 
 
-* Caution! For this question, please follow the formula in `HW4.ppt` or `HW4.pdf`.
-  
+* You may search **`#### Your job 2 starts here: downsampling ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+
+* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
+
+
+
+# Question 3: Gaussian pyramid (20 pts)
+
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/Down_sampled.png)
+
+* Go to the `main` function and find `if int(args.current_step) >= 2:` and read the corresponding code.
+
+* Your job is to complete the implementation of the `Gaussian_pyramid(args, I, kernel, scale)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy dictionary `Output`, corresponding to the downsampled images. Please make sure that your results follow the required numpy array shapes. 
+
+* You may search **`#### Your job 3 starts here: create the n-th downsampled image ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+
+* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
+
 ## Running and saving
 
 * Once completed, please run the following command<br/>
 `python3 main.py --current_step 2 --data lighthouse --display --save`<br/>
 These commands will run your code. You will see several generated images, and several texts displayed in command lines. 
 
-* The code will generate `Residual_lighthouse_scale_0.npz`, `Residual_lighthouse_scale_1.npz`, `Residual_lighthouse_scale_2.npz`, and `Residual_lighthouse.png`, which you will include in your submission.
+* The code will generate `Downsampled_lighthouse_scale_0.npz`, `Downsampled_lighthouse_scale_1.npz`, `Downsampled_lighthouse_scale_2.npz`, `Downsampled_lighthouse_scale_3.npz`, and `Downsampled_lighthouse.png`, which you will include in your submission.
 
-* **Running the code should only take several seconds. If it runs more than 40 seconds, you will get a 30% reduction for Questions 3 and 4.** 
+* **Running the code should only take several seconds. If it runs more than 20 seconds, you will get a 30% reduction for Questions 2 and 3.** 
 
 
 
-# Question 5: Image reconstruction (20 pts)
-
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_4_programming_set/HW_4_programming/for_display/Reconstruct.png)
+# Question 4: Upsampling (20 pts)
 
 * Go to the `main` function and find `if int(args.current_step) >= 3:` and read the corresponding code.
 
-* Your job is to complete the implementation of the `Image_reconstruction(args, I_small, L_pyramid, kernel, scale)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `Output`, corresponding to the reconstructed image. Please make sure that your results follow the required numpy array shapes. 
+* Your job is to complete the implementation of the `Upsampling(args, I, kernel)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `I_out`. Please make sure that your results follow the required numpy array shapes. 
 
-* You may search **`#### Your job 5 starts here: reconstruct the original image ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+* You may search **`#### Your job 4 starts here: upsampling ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
 
-* Caution! For this question, please follow the formula in `HW4.ppt` or `HW4.pdf`.
+* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
 
+
+
+# Question 5: Laplacian pyramid (20 pts)
+
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/Up_sampled.png)
+
+* Go to the `main` function and find `if int(args.current_step) >= 3:` and read the corresponding code.
+
+* Your job is to complete the implementation of the `Laplacian_pyramid(args, G_pyramid, kernel, scale)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy dictionary `Output`, corresponding to the residual images. Please make sure that your results follow the required numpy array shapes. 
+
+* You may search **`#### Your job 5 starts here: create the n-th residual image ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+
+* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
+  
 ## Running and saving
 
 * Once completed, please run the following command<br/>
 `python3 main.py --current_step 3 --data lighthouse --display --save`<br/>
 These commands will run your code. You will see several generated images, and several texts displayed in command lines. 
 
+* The code will generate `Residual_lighthouse_scale_0.npz`, `Residual_lighthouse_scale_1.npz`, `Residual_lighthouse_scale_2.npz`, and `Residual_lighthouse.png`, which you will include in your submission.
+
+* **Running the code should only take several seconds. If it runs more than 40 seconds, you will get a 30% reduction for Questions 4 and 5.** 
+
+
+
+# Question 6: Image reconstruction (20 pts)
+
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/Reconstruct.png)
+
+* Go to the `main` function and find `if int(args.current_step) >= 4:` and read the corresponding code.
+
+* Your job is to complete the implementation of the `Image_reconstruction(args, I_small, L_pyramid, kernel, scale)` function. Please go to the function and carefully read the input, output, and instructions. You can assume that the actual inputs will follow the input format, and your goal is to generate the output numpy array `Output`, corresponding to the reconstructed image. Please make sure that your results follow the required numpy array shapes. 
+
+* You may search **`#### Your job 6 starts here: reconstruct the original image ####`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
+
+* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
+
+## Running and saving
+
+* Once completed, please run the following command<br/>
+`python3 main.py --current_step 4 --data lighthouse --display --save`<br/>
+These commands will run your code. You will see several generated images, and several texts displayed in command lines. 
+
 * The code will generate `Reconstruct_lighthouse.npz` and `Reconstruct_lighthouse.png`, which you will include in your submission.
   
-* **Running the code should only take several seconds. If it runs more than 60 seconds, you will get a 30% reduction for Questions 5.**
+* **Running the code should only take several seconds. If it runs more than 60 seconds, you will get a 30% reduction for Question 6.**
 
   
 
