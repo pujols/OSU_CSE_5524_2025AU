@@ -56,6 +56,7 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 * You are given several images in the `data` folder, as well as the following toy image. All of them have three color channels (red, green, and blue). The pixel values are between 0.0 to 1.0.
 
 Rectangle: 
+
 ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_2_programming_set/HW_2_programming/for_display/rectangle.png)
 
 * The convoluted rectangle with an average (box) filter is as below:
