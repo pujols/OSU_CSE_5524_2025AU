@@ -38,6 +38,9 @@ def load_kernel(args):
 
     print("Use " + args.kernel + " kernel")
 
+    if args.kernel == "average":
+        kernel = np.ones((11,11)) / 121
+
     if args.kernel == "binomial":
         #### Your job 1.2 starts here: implement the 5-by-5 2D binomial filter (see textbook/lecture slides for details) ####
         kernel = np.zeros((5, 5)) # this is a placeholder, and you can remove this line completely
@@ -242,22 +245,30 @@ def Image_reconstruction(args, I_small, L_pyramid, kernel, scale):
 
 def main(args):
 
+    ## Convolution
+    if int(args.current_step) == 1:
+        print("Load image")
+        I = data_loader(args)
+        print("Perfrom convolution")
+        kernel = load_kernel(args)
+        I_out = Convolution(args, I, kernel)
+
     # Number of times to downsample or upsample
     scale = int(args.scale)
 
     ## Create Gaussian Pyramid
-    if int(args.current_step) >= 1:
+    if int(args.current_step) >= 2:
         print("Load image")
         I = data_loader(args)
         kernel = load_kernel(args)
         G_pyramid = Gaussian_pyramid(args, I, kernel, scale)
 
     ## Create Laplacian Pyramid
-    if int(args.current_step) >= 2:
+    if int(args.current_step) >= 3:
         L_pyramid = Laplacian_pyramid(args, G_pyramid, kernel, scale)
 
     ## Reconstruct the original image
-    if int(args.current_step) >= 3:
+    if int(args.current_step) >= 4:
         I_reconstruct = Image_reconstruction(args, G_pyramid[scale], L_pyramid, kernel, scale)
 
         ## Sanity check
