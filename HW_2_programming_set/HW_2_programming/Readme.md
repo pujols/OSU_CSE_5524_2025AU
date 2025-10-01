@@ -72,7 +72,7 @@ Rectangle:
 
 
 
-# Question 1:  (20 pts)
+# Question 1:  (10 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 1:`
 
@@ -99,7 +99,7 @@ These commands will run your code. You will see several generated images, and se
  
 
 
-# Question 2: Downsampling (20 pts)
+# Question 2: Downsampling (10 pts)
 
 * Go to the `main` function and find `if int(args.current_step) >= 2:` and read the corresponding code.
 
@@ -113,7 +113,7 @@ These commands will run your code. You will see several generated images, and se
 
 
 
-# Question 3: Gaussian pyramid (20 pts)
+# Question 3: Gaussian pyramid (10 pts)
 
 ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_2_programming_set/HW_2_programming/for_display/Down_sampled.png)
 
@@ -137,7 +137,7 @@ These commands will run your code. You will see several generated images, and se
 
 
 
-# Question 4: Upsampling (20 pts)
+# Question 4: Upsampling (10 pts)
 
 * Go to the `main` function and find `if int(args.current_step) >= 3:` and read the corresponding code.
 
@@ -149,7 +149,7 @@ These commands will run your code. You will see several generated images, and se
 
 
 
-# Question 5: Laplacian pyramid (20 pts)
+# Question 5: Laplacian pyramid (10 pts)
 
 ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_2_programming_set/HW_2_programming/for_display/Up_sampled.png)
 
@@ -173,7 +173,7 @@ These commands will run your code. You will see several generated images, and se
 
 
 
-# Question 6: Image reconstruction (20 pts)
+# Question 6: Image reconstruction (10 pts)
 
 ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_2_programming_set/HW_2_programming/for_display/Reconstruct.png)
 
