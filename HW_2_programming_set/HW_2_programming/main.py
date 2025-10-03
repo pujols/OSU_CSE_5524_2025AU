@@ -19,7 +19,7 @@ def data_loader(args):
             The third dimension is color channels, from Red to Green to Blue.
     """
 
-    if args.data in ["dreese", "lighthouse"]:
+    if args.data in ["dreese", "lighthouse", "rectangle"]:
         print("Using " + args.data + " photo")
         current_dir = os.getcwd()
         image_path = osp.join(current_dir, 'data', args.data + '.png')
