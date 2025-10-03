@@ -19,13 +19,26 @@ def data_loader(args):
             The third dimension is color channels, from Red to Green to Blue.
     """
 
-    if args.data in ["dreese", "lighthouse", "rectangle"]:
+    if args.data in ["dreese", "lighthouse"]:
         print("Using " + args.data + " photo")
         current_dir = os.getcwd()
         image_path = osp.join(current_dir, 'data', args.data + '.png')
         I = np.asarray(Image.open(image_path)).astype(np.float64)/255
         I = np.transpose(I, (1, 0, 2))
         I = I[:, ::-1, :]
+
+    elif args.data == "rectangle":
+        print("Using rectangle shape")
+        I = np.zeros((31, 31, 3))
+        I[10:21, 10:21, :] = 1
+
+    ## Display the input image
+    fig, ax = plt.subplots()
+    ax.imshow(np.transpose(I, (1, 0, 2)), origin='lower')
+    ax.set_title('Inpur image: I')
+    if args.display:
+        plt.show()
+    plt.close(fig)
 
     return I
 
