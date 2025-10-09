@@ -1,8 +1,8 @@
-# Homework 2
+# Homework 3
 
 ## Submission instructions
 
-* Due date and time: March 2nd (Sunday) 2025, 23:59 ET
+* Due date and time: October 21st (Tuesday) 2025, 23:59 ET
 
 * Carmen submission: 
 Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the following files
@@ -17,7 +17,7 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 * Download or clone this repository.
 
-*  You will see a PPT and PDF named `HW2`, which provides useful information for the homework assignment.
+* You will see a PPT and PDF named `HW3`, which provides useful information for the homework assignment.
 
 * You will see one Python script: `main.py`.
 
@@ -35,7 +35,7 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 * **Caution! Please do not import packages (like scikit learn) that are not listed in the provided code. In this homework, you are not allowed to use numPy's or other Python libraries' built-in convolution, DFT, IDFT, and filter functions. If you use them, you will get 0 points for the entire homework.** 
 
-* Caution! Follow the instructions in each question strictly to code up your solutions. Do not change the output format. Do not modify the code unless we instruct you to do so. (You are free to play with the code but your submitted code should not contain those changes that we do not ask you to do.) A homework solution that does not match the provided setup, such as format, name, initializations, etc., will not be graded. It is your responsibility to make sure that your code runs with the provided commands and scripts.
+* Caution! Follow the instructions in each question strictly to code up your solutions. Do not change the output format. Do not modify the code unless we instruct you to do so. (You are free to play with the code, but your submitted code should not contain those changes that we do not ask you to do.) A homework solution that does not match the provided setup, such as format, name, initializations, etc., will not be graded. It is your responsibility to make sure that your code runs with the provided commands and scripts.
 
 ## Installation instructions
 
@@ -50,21 +50,21 @@ Submit a .zip file named `name.number.zip` (e.g., `chao.209.zip`) with the follo
 
 # Introduction
 
-In this homework, you will implement convolution, discrete Fourier transform (DFT), some filters (convolutional kernels), and some image processing steps introduced in Lectures 10 - 13 (textbook, chapters 15 - 18). Specifically, your code will output several images or frequency responses.
+In this homework, you will implement convolution, discrete Fourier transform (DFT), some filters (convolutional kernels), and some image processing steps introduced in Lectures 6 - 9 (textbook, chapters 15 - 18). Specifically, your code will output several images or frequency responses.
 
-* You are given several images in the `data` folder as well as the following two toy images. All of them have three color channels (red, green, and blue). The pixel values are between 0.0 to 1.0.
+* You are given several images in the `data` folder, as well as the following two toy images. All of them have three color channels (red, green, and blue). The pixel values are between 0.0 to 1.0.
 
-Cosine: ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/cosine.png)
+Cosine: ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_3_programming_set/HW_3_programming/for_display/cosine.png)
 
-Recntangle: ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/rectangle.png)
+Recntangle: ![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_3_programming_set/HW_3_programming/for_display/rectangle.png)
 
 * Your goal is to perform convolution, DFT, and several other image processing operations on them. For example, the convoluted rectangle with an average (box) filter is as below:
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/Convolution_output_rectangle_average.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_3_programming_set/HW_3_programming/for_display/Convolution_output_rectangle_average.png)
 
 The amplitude of the DFT output of the cosine image is as below (think about why there is a point in the middle at frequency = 0, 0):
 
-![Alt text](https://github.com/pujols/OSU_CSE_5524_2025SP/blob/main/HW_2_programming_set/HW_2_programming/for_display/DFT_amplitude_cosine.png)
+![Alt text](https://github.com/pujols/OSU_CSE_5524_2025AU/blob/main/HW_3_programming_set/HW_3_programming/for_display/DFT_amplitude_cosine.png)
 
 
 
@@ -76,7 +76,7 @@ The amplitude of the DFT output of the cosine image is as below (think about why
 
 
 
-# Question 1:  (20 pts)
+# Question 1: Convolution (10 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 1:`
 
@@ -88,7 +88,7 @@ The amplitude of the DFT output of the cosine image is as below (think about why
 
 * You may search **`#### Your job 1.0`** and **`#### Your job 1.1`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
 
-* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
+* Caution! For this question, please follow the formula in `HW3.ppt` or `HW3.pdf`.
 
 ## Running and saving
 
@@ -100,7 +100,7 @@ These commands will run your code. You will see several generated images, and se
 * The code will generate `1_Convolution_output_rectangle_average.png`, `1_Convolution_output_dreese_move_avg.png`, `1_Results_Convolution_output_dreese_move_avg.npz`, and `1_Results_Convolution_output_rectangle_average.npz`, which you will include in your submission.
 
 
-# Question 2:  (30 pts)
+# Question 2: DFT and IDFT (30 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 2:` and read the corresponding code.
 
@@ -112,7 +112,7 @@ These commands will run your code. You will see several generated images, and se
 
 * You may search **`#### Your job 2`** to locate where to amend your implementation. You will see some instructions there. You are free to create more space in between.
 
-* Caution! For this question, please follow the formula in `HW2.ppt` or `HW2.pdf`.
+* Caution! For this question, please follow the formula in `HW3.ppt` or `HW3.pdf`.
 
 ## Running and saving
 
@@ -124,7 +124,7 @@ These commands will run your code. You will see several generated images, and se
 * The code will generate `2_IDFT_image_dreese.png`, `2_IDFT_image_cosine.png`, `2_DFT_amplitude_dreese.png`, `2_DFT_amplitude_cosine.png`, `2_Results_DFT_amplitude_dreese.npz`, `2_Results_DFT_amplitude_cosine.npz`, `2_Results_IDFT_image_dreese.npz`, and `2_Results_IDFT_image_cosine.npz`, which you will include in your submission.
 
 
-# Question 3: (0 pts)
+# Question 3: Modulation (0 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 3:` and read the corresponding code.
 
@@ -145,7 +145,7 @@ This command will run your code. You will see several generated images, and seve
 
 * Go to the `main` function and find `if int(args.current_step) == 4:` and read the corresponding code.
 
-* This part of the code is about the relationship between convolution in the spatial domain and multiplication in the frequency domain. Specifically, we implemented the code where the convolutional kernel can inferred from division in the frequency domain.   
+* This part of the code is about the relationship between convolution in the spatial domain and multiplication in the frequency domain. Specifically, we implemented the code where the convolutional kernel can be inferred from division in the frequency domain.   
 
 * Your job is to understand and verify the relationship. Specifically, `kernel` will look very similar to `kernel_reconstruct`.
   
@@ -173,7 +173,7 @@ This command will run your code. You will see several generated images, and seve
 * No files need to be submitted for this question.
   
 
-# Question 6: (20 pts)
+# Question 6: Convolutional Filter Design (20 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 6:` and read the corresponding code.
 
@@ -201,7 +201,7 @@ These commands will run your code. You will see several generated images, and se
 * Please describe how you design your solution in the pdf.
 
 
-# Question 7: (10 pts)
+# Question 7: Convolutional Filter Design (10 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 7:` and read the corresponding code.
 
@@ -220,7 +220,7 @@ This command will run your code. You will see several generated images, and seve
 * The code will generate `7_Convolution_output_dreese_Laplacian.png`, `7_Kernel_Laplacian.png`, `7_Results_Convolution_output_dreese_Laplacian.npz`, and `7_Results_Kernel_Laplacian.npz`, which you will include in your submission.
 
   
-# Question 8: (20 pts)
+# Question 8: Your time! (20 pts)
 
 * Go to the `main` function and find `if int(args.current_step) == 8:` and read the corresponding code.
  
