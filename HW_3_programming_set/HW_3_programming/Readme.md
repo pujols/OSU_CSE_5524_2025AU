@@ -76,7 +76,7 @@ The amplitude of the DFT output of the cosine image is as below (think about why
 
 
 
-# Question 1: Convolution (10 pts)
+# Question 1: Convolution (0 pts --- same as HW 2)
 
 * Go to the `main` function and find `if int(args.current_step) == 1:`
 
