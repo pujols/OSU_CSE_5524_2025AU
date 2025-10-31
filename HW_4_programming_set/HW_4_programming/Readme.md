@@ -1,5 +1,5 @@
 # ============================
-# README: Homework 4 - Q1–Q5
+# README: Homework 4 - Q1–Q6
 # ============================
 
 This assignment walks you through the core components of a Region Proposal Network (RPN) using bounding boxes and COCO-style annotations. You will **not** be training a network — instead, you will implement the full RPN pipeline, including tensor generation, decoding, anchor encoding, and non-maximum suppression.
