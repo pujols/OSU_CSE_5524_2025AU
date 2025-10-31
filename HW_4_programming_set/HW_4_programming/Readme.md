@@ -1,8 +1,8 @@
 # ============================
-# README: Homework 3 - Q1–Q5
+# README: Homework 4 - Q1–Q5
 # ============================
 
-This assignment walks you through the core components of a Region Proposal Network (RPN) using bounding boxes and COCO-style annotations. You will **not** be training a network — instead, you will implement the full RPN pipeline including tensor generation, decoding, anchor encoding, and non-maximum suppression.
+This assignment walks you through the core components of a Region Proposal Network (RPN) using bounding boxes and COCO-style annotations. You will **not** be training a network — instead, you will implement the full RPN pipeline, including tensor generation, decoding, anchor encoding, and non-maximum suppression.
 
 Each job corresponds to a specific step in the pipeline.
 
@@ -48,8 +48,8 @@ Your `.zip` file **must contain** the following:
 > 🚨 **IMPORTANT:**  
 > All jobs should run in **reasonable time** — ideally **less than 5 minutes per job**.
 > Missing **any** of the required files (`main.py`, outputs in `result/`, or `report.pdf`) will result in a **grade penalty**.  
-> You need to save images for the **task 2, 4 and 5 by yourself** in the result folder and submit it. Create a folder per task in the result and put images for each task in it.  
-> There is a unit test file, `test_rpn_utils.py,` which you can run to determine if your code is correct. The unit test is not complete, so there is a chance by passing all the tests, you still have some problems, but it is helpful. Read more about it at the end of this document.
+> You need to save images for the **tasks 2, 4, and 5 by yourself** in the result folder and submit them. Create a folder per task in the result and put images for each task in it.  
+> There is a unit test file, `test_rpn_utils.py,` which you can run to determine if your code is correct. The unit test is not complete, so there is a chance that by passing all the tests, you still have some problems, but it is helpful. Read more about it at the end of this document.
 
 ---
 
@@ -92,20 +92,32 @@ pip install numpy pillow matplotlib
 You are NOT allowed to use other Python libraries beyond those we imported. You need to implement the IoU and NMS functions by yourself.  
 
 
+
+
+## Caution
+The patch size is a "variable." The TA and I can take your completed code, change the patch size, and your code should still work perfectly. In other words, your implementation should NOT hard-code the patch size.
+
+In your implementation, please do not change anything beyond what you are instructed to do. Where you should implement/change is mostly within the "your job" portions. 
+
+The report.pdf is only about question 6. Please see the question details at the end of the HW4.ppt or HW4.pdf. 
+
+
+
+
 ---
 ## Detailed Introduction
 
-Please find it in `HW3.ppt` or `HW3.pdf`
+Please find it in `HW4.ppt` or `HW4.pdf`
 
 
-## Question 1: Naïve Ground Truth Tensor Generation (30 points)
+## Question 1: Naïve Ground Truth Tensor Generation (25 points)
 
 ### Objective:
 Generate patch-level ground truth tensors from annotated images to simulate the output of a simple RPN.
 
 ### Setup:
 - Resize input images to 200x200.
-- Divide each resized image into a 20×20 grid of 10×10 patches.
+- Divide each resized image into a 10×10 grid of 20×20 patches.
 
 ### What to read:
 - Please see `main` after `args.job_number == 1:`, `resize_image_and_boxes`, `compute_patch_grid`, `boxes_overlap` and `generate_gt_tensors` functions.
@@ -156,11 +168,11 @@ Convert the existence and location tensors back into bounding box proposals for 
 python main.py --job_number 2 --image_folder data/images --annotation_file data/coco.json --tensor_folder data/task2 --threshold 0.65 --display
 ```
 
-you can paly with different thresholds to see more or less bboxes
+You can play with different thresholds to see more or fewer bboxes
 
 ### Output:
 - You need to save all the images in the result folder and submit them with the rest of the files.
-- Printed list of decoded boxes (3 boxes) for image.
+- Printed list of decoded boxes (3 boxes) for the image.
 ```bash
 [x_center=881.6, y_center=371.1, width=271.6, height=537.7, conf=0.70]
 [x_center=315.3, y_center=276.1, width=299.4, height=251.0, conf=0.66]
@@ -171,7 +183,7 @@ you can paly with different thresholds to see more or less bboxes
 
 
 
-## Question 3: Anchor-Based Encoding (30 points)
+## Question 3: Anchor-Based Encoding (25 points)
 
 ### Objective:
 Implement anchor-based encoding by labeling each patch location and anchor shape based on how well it matches the ground truth boxes.
@@ -188,7 +200,7 @@ Implement anchor-based encoding by labeling each patch location and anchor shape
 
 ### Tasks:
 1. For `compute_iou`, follow the definition in the slide. 
-2. For `encode_anchors_multi_gt`, follow the psuedocode in the slide. Specifically,
+2. For `encode_anchors_multi_gt`, follow the pseudocode in the slide. Specifically,
    - Scan all anchor shapes:
        - Compute IoU between anchor_box and the current GT. 
        - Keep only the single best anchor (the one with the largest IoU for this GT at this patch).
@@ -212,6 +224,49 @@ There are six images, each creating two files for each anchor. Then, for this pa
 ```bash
 python main.py --job_number 3 --image_folder data/images --annotation_file data/coco.json --anchor_file data/anchors.json --tensor_folder result --display --save
 ```
+
+### Caution:
+When accessing or modifying values in the existence and location Tensors—whether you're saving ground truth values or loading them during decoding—the correct indexing order should be:
+
+```
+existence[col, row, 0]
+existence[col, row, 1]
+dx, dy, dw, dh = location[col, row]
+```
+
+
+However, you may mistakenly use:
+
+```
+existence[row, col, 0]       ❌
+existence[row, col, 1]       ❌
+dx, dy, dw, dh = location[row, col]   ❌
+```
+
+
+This error causes a mismatch between the spatial grid and the corresponding values, which can lead to incorrect outputs in your results. Please make sure to swap row and col wherever you are working with the existence and location tensors.
+
+Additionally, the correct indexing is noted in the function docstring in the starter code:
+
+
+def generate_gt_tensors(boxes):
+    """
+    Generates ground-truth existence and location tensors for a resized image.
+
+    Args:
+        boxes (list): List of ground-truth bounding boxes in the format [x_center, y_center, width, height],
+        assuming a coordinate system with (0, 0) at the bottom-left.
+
+    Returns:
+        existence (ndarray): Tensor of shape (GRID_NUMBER, GRID_NUMBER, 2), where
+        existence[j, i, 0] = 1 if an object exists in patch (i, j),
+
+         existence[j, i, 1] = 1 otherwise (i.e., background patch).
+
+        location (ndarray): Tensor of shape (GRID_NUMBER, GRID_NUMBER, 4), where
+        location[j, i] = [x_center, y_center, width, height] of a GT box assigned to patch (i, j), if any.
+    """
+
 
 
 ## Question 4: Anchor-Based Decoding (10 points)
@@ -308,12 +363,12 @@ python main.py --job_number 5 --image_folder data/images --annotation_file data/
 
 ## Question 6: Written Part (10 points)
 
-Please find them at the end of the `HW3.pdf` or `HW3.ppt`
+Please find them at the end of the `HW4.pdf` or `HW4.ppt`
 
 
 # 🧪 Unit Tests for Region Proposal Network (RPN) Modules
 
-This directory contains unit tests for verifying the functionality of key components in the Region Proposal Network (RPN) pipeline used in Homework 3.
+This directory contains unit tests for verifying the functionality of key components in the Region Proposal Network (RPN) pipeline used in Homework 4.
 
 ---
 
@@ -340,7 +395,7 @@ Total Test Cases: **21**
 ### Prerequisites
 
 - Python 3.7+
-- Required Python packages: `numpy`, `Pillow` and `unittest`
+- Required Python packages: `numpy`, `Pillow`, and `unittest`
 
 ---
 
