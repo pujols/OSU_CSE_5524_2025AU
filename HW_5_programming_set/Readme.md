@@ -81,6 +81,8 @@ The goal is to practice:
 - Using learned features for downstream tasks via simple k-nearest neighbors.
 - Reasoning about representation quality and how architecture/training changes affect it.
 
+Please also take a look at HW5.ppt or HW5.pdf
+
 ---
 
 ## Question 0: Get ready (no coding points)
@@ -189,6 +191,7 @@ In this question, you will implement the dataset class, dataloader, autoencoder,
      - Instantiate a `ColorShapeDataset` with `build_transform()`.
      - Wrap it in a `DataLoader` with the given `batch_size`, `shuffle`, and `num_workers`.
 
+
 2. **Convolutional autoencoder**
 
    Complete:
@@ -210,10 +213,6 @@ In this question, you will implement the dataset class, dataloader, autoencoder,
 	Model architecture visualization:
 
 	<img src="ae.png" width="40%" alt="AE_NN_probe.png">
-
-
-
-
 
 
 3. **Training the autoencoder**
@@ -281,8 +280,9 @@ In this question, you will use the trained autoencoder as a feature extractor an
 
    Requirements:
 
-   * Calculate the distance betwqeen all the data points between `query_embeddings` and `ref_embeddings `. 
-   * For each query, find its nearest neighbors indices `nn_indices` in the reference embeddings using the `dist` you calculate in the previous step.
+   * Calculate the distance between all the data points between `query_embeddings` and `ref_embeddings `.
+   * For the distance, please use cosine distance, that is, pre-normalize each vector to have its L2 norm equal to 1, and compute the L2 distance
+   * For each query, find its nearest neighbors' indices `nn_indices` in the reference embeddings using the `dist` you calculated in the previous step.
    
    <img src="AE_NN_viz.png" width="300" alt="Autoencoder Neural Network Visualization">
 
@@ -357,7 +357,7 @@ You may, for example:
 
 * Modify the autoencoder architecture
 * Change the training setup
-* Change the training set or adding data augmentations
+* Change the training set or add data augmentations
 
 ### Not allowed
 * Using any images from `data_folder_test` in training.
