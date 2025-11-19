@@ -164,6 +164,7 @@ def create_dataset():
     except Exception as exc:
         print(f"Warning: could not plot samples grid ({exc})")
 
+
 def parse_labels(path: str) -> Tuple[int, int]:
     """
        Parse shape and color labels from a filename.
@@ -327,7 +328,6 @@ def build_dataloader(data_dir: str,
     return loader
 
 
-
 def train_autoencoder(model: ConvAutoencoder, train_loader: DataLoader,
                        device: torch.device,
                       epochs: int, lr: float, weight_decay: float,
@@ -353,9 +353,11 @@ def train_autoencoder(model: ConvAutoencoder, train_loader: DataLoader,
     torch.save({'model_state': model.state_dict()}, checkpoint_path)
     # ------------------------------------------------------------------
 
+
 def load_raw_tensor(path: str) -> torch.Tensor:
     img = Image.open(path).convert('RGB')
     return transforms.ToTensor()(img)
+
 
 def flatten_feature(t: torch.Tensor) -> torch.Tensor:
     return torch.flatten(t, start_dim=1)
@@ -428,8 +430,6 @@ def cross_nearest_neighbor_accuracy(
     pred_labels = labels_ref[nn_idx]
     correct = (labels_query == pred_labels).float().mean().item()
     return correct * 100.0
-
-
 
 
 def save_nearest_neighbor_grid_cross(
@@ -515,6 +515,7 @@ def save_nearest_neighbor_grid_cross(
 
     print(f"Saved cross-dataset nearest-neighbor grid to {out_path}")
     return
+
 
 def plot_layerwise_nn(color_accs, shape_accs, out_path: str):
     """
