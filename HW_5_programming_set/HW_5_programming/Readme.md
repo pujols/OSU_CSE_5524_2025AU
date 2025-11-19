@@ -104,7 +104,7 @@ There is nothing to submit for Question 0.
 
 ---
 
-## Question 1: Generating colored shape images (15 pts)
+## Question 1: Generating colored shape images (20 pts)
 
 In this question, you will complete the code that draws shapes and creates the training dataset.
 
@@ -162,7 +162,7 @@ This will:
 
 ---
 
-## Question 2: Building and training a convolutional autoencoder (40 pts)
+## Question 2: Building and training a convolutional autoencoder (70 pts)
 
 In this question, you will implement the dataset class, dataloader, autoencoder, and training loop.
 
@@ -252,7 +252,7 @@ This will:
 
 ---
 
-## Question 3: Probing representations with nearest neighbors (20 pts)
+## Question 3: Probing representations with nearest neighbors (30 pts)
 
 In this question, you will use the trained autoencoder as a feature extractor and analyze how well different layers encode **color** and **shape**.
 
@@ -344,7 +344,7 @@ This will:
 
 ---
 
-## Question 4: Improving shape accuracy (bonus / open-ended, 25 pts)
+## Question 4: Improving shape accuracy (bonus/open-ended, 20 pts)
 
 In this question, you are free to **change anything you want** in the **training pipeline or architecture** to achieve **higher shape 1-NN accuracy**, **with one critical constraint**:
 
