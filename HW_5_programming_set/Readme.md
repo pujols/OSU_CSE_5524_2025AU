@@ -3,7 +3,7 @@
 
 ## Submission instructions
 
-* **Due date and time:** See the course website / syllabus for the official due date.
+* **Due date and time:** 12/05/2025 (midnight)
 * **Carmen submission:**
   Submit a `.zip` file named `name.number.zip` (e.g., `chao.209.zip`) with the following:
 
@@ -57,7 +57,7 @@
   - matplotlib
   - Pillow
 
-* On a typical environment, you can install them with:
+* In a typical environment, you can install them with:
   ```bash
   pip install numpy torch torchvision matplotlib pillow
   ```
@@ -197,7 +197,7 @@ In this question, you will implement the dataset class, dataloader, autoencoder,
    - decoder construction in `ConvAutoencoder.__init__`
    - `encode` and `decode` methods
 
-   Hints / constraints:
+   Hints/constraints:
 
    * Use multiple (convolutional layers + BatchNorm + ReLU) for the encoder.
      * for the convolutions, use kernel size 3, stride 2, padding 1 to downsample by a factor of 2 at each layer.
@@ -249,7 +249,7 @@ This will:
 - `main.py` (with completed dataset, dataloader, and autoencoder code)
 - `ae_runs/autoencoder.pt`
 
-(Optionally you may also submit any reconstruction visualization figure you generate.)
+(Optionally, you may also submit any reconstruction visualization figure you generate.)
 
 ---
 
@@ -391,4 +391,4 @@ Your final `.zip` should contain:
   - `ae_runs/autoencoder.pt`
 * A short explanation for Q4 (if you attempted it).
 
-Make sure your code runs with the commands shown above on a fresh environment.
+Make sure your code runs with the commands shown above in a fresh environment.
