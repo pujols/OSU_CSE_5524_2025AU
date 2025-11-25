@@ -3,7 +3,7 @@
 
 ## Submission instructions
 
-* **Due date and time:** 12/05/2025 (midnight)
+* **Due date and time:** 12/09/2025 (midnight)
 * **Carmen submission:**
   Submit a `.zip` file named `name.number.zip` (e.g., `chao.209.zip`) with the following:
 
@@ -104,7 +104,7 @@ There is nothing to submit for Question 0.
 
 ---
 
-## Question 1: Generating colored shape images (20 pts)
+## Question 1: Generating colored shape images (30 pts)
 
 In this question, you will complete the code that draws shapes and creates the training dataset.
 
@@ -162,7 +162,7 @@ This will:
 
 ---
 
-## Question 2: Building and training a convolutional autoencoder (70 pts)
+## Question 2: Building and training a convolutional autoencoder (80 pts)
 
 In this question, you will implement the dataset class, dataloader, autoencoder, and training loop.
 
